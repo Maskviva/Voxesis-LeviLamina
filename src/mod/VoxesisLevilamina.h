@@ -1,15 +1,16 @@
 #pragma once
 
 #include "ll/api/mod/NativeMod.h"
+#include "mod/server/app.h"
 
-namespace my_mod {
+namespace voxesis_levilamina {
 
-class MyMod {
+class VoxesisLevilamina {
 
 public:
-    static MyMod& getInstance();
+    static VoxesisLevilamina& getInstance();
 
-    MyMod() : mSelf(*ll::mod::NativeMod::current()) {}
+    VoxesisLevilamina() : mSelf(*ll::mod::NativeMod::current()) {}
 
     [[nodiscard]] ll::mod::NativeMod& getSelf() const { return mSelf; }
 
@@ -28,6 +29,7 @@ public:
 
 private:
     ll::mod::NativeMod& mSelf;
+    static std::unique_ptr<app> serverApp;
 };
 
 } // namespace my_mod
